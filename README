@@ -1,1 +1,11 @@
-This is KEXP... plus!?
+## This is KEXP... plus!?
+
+### Actually, it's just a plaything I made to mess with the KEXP API: https://api.kexp.org/
+
+My initial goal was to be able to search for the time KEXP last played a particular artist. My wife
+and I submitted a postcard for Good Mail Day 2020 and I wanted to see when/if they were able to play
+our request!
+
+## Tech
+Trying to stick to vanilla JavaScript and HTML to better understand how the web works. I've been in
+React/framework land too long. ;(
