@@ -1,6 +1,11 @@
 function fetchData() {
+  // Get artist value from input form box
+  const artist = document.getElementById('artist').value;
+  const page = document.getElementById('page').value;
+
   fetch(
-    'https://api.kexp.org/v2/plays/?format=json&limit=1&ordering=-airdate&airdate_before=2020-10-01T02:09:00.000Z',
+    `https://api.kexp.org/v2/plays/?airdate_after=&airdate_before=&has_comment=&exclude_airbreaks=&show_ids=&host_ids=&song=&song_exact=&artist=${artist}&artist_exact=&album=&album_exact=&label=&label_exact=&recording_id=&ordering=-airdate&offset=${page * 20}`,
+
     {
       headers: {
         accept: 'application/json, text/javascript, */*; q=0.01',
@@ -19,12 +24,17 @@ function fetchData() {
   )
     .then(response => response.json())
     .then(data => {
-      console.log({ data });
       const { results } = data;
-      console.log({ results });
-      const resultDiv = document.getElementById('fetchResult');
-      const newData = document.createTextNode(JSON.stringify(results));
-      resultDiv.appendChild(newData);
+
+      // Parse our data
+      const parsedResults = results.map(result => {
+        return `${result.artist} - ${result.song}<br/>${result.airdate}<br/>${result.comment}`;
+      });
+      console.log({ parsedResults });
+
+      const resultDiv = (document.getElementById('fetchResult').innerHTML = parsedResults.join(
+        '<br/><br/>',
+      ));
     })
     .catch(error => {
       console.log({ error });

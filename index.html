@@ -5,7 +5,13 @@
   </head>
   <body>
     <div>
-      <input type="button" onclick="fetchData()" value="Fetch..." />
+      <label for="artist">Enter artist to search for:</label>
+      <input type="text" id="artist" value="" />
+      <input type="button" id="submit" onclick="fetchData()" value="Submit" />
+    </div>
+    <div>
+      <label for="page">Page:</label>
+      <input type="text" id="page" value="" />
     </div>
     <div id="fetchResult">
     </div>
