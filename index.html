@@ -7,11 +7,14 @@
     <div>
       <label for="artist">Enter artist to search for:</label>
       <input type="text" id="artist" value="" />
-      <input type="button" id="submit" onclick="fetchData()" value="Submit" />
+      <input type="button" id="submit" onclick="fetchData(0)" value="Submit" />
     </div>
     <div>
       <label for="page">Page:</label>
-      <input type="text" id="page" value="" />
+      <!-- <input type="text" id="page" value="" /> -->
+      <input type="button" id="page" onclick="fetchData(this.value)" value="1" />
+      <input type="button" id="page" onclick="fetchData(this.value)" value="2" />
+      <input type="button" id="page" onclick="fetchData(this.value)" value="3" />
     </div>
     <div id="fetchResult">
     </div>

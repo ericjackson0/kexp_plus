@@ -1,10 +1,9 @@
-function fetchData() {
+function fetchData(page) {
   // Get artist value from input form box
   const artist = document.getElementById('artist').value;
-  const page = document.getElementById('page').value;
 
   fetch(
-    `https://api.kexp.org/v2/plays/?airdate_after=&airdate_before=&has_comment=&exclude_airbreaks=&show_ids=&host_ids=&song=&song_exact=&artist=${artist}&artist_exact=&album=&album_exact=&label=&label_exact=&recording_id=&ordering=-airdate&offset=${page * 20}`,
+    `https://api.kexp.org/v2/plays/?airdate_after=&airdate_before=&has_comment=&exclude_airbreaks=&show_ids=&host_ids=&song=&song_exact=&artist=${artist}&artist_exact=&album=&album_exact=&label=&label_exact=&recording_id=&ordering=-airdate&offset=${page * 20 - 20}`,
 
     {
       headers: {
@@ -24,7 +23,7 @@ function fetchData() {
   )
     .then(response => response.json())
     .then(data => {
-      const { results } = data;
+      const { results, previous, next } = data;
 
       // Parse our data
       const parsedResults = results.map(result => {
